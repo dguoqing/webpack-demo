@@ -1,0 +1,10 @@
+
+body{
+    background: #09f;
+}
+div{
+    transform: rotate(20deg);
+    width: 100px;
+    height: 100px;
+    background: url(./img.jpg);
+}
