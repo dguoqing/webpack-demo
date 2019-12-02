@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
     mode: 'production',
@@ -67,7 +69,7 @@ module.exports = {
                         loader:'url-loader',
                         options:{
                             limit:8192,
-                            path:'/images/'
+                            outputPath:'/images/'
                         }
                     }
                 ]
@@ -75,6 +77,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProgressPlugin(),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, './build')]
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',

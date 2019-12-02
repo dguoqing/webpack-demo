@@ -9,9 +9,7 @@ console.log(22222)
 const fn = () => console.log(555)
 let arr = []
 console.log(arr.includes(1))
-class Person{
-    b= 2
-}
+
 
 function* helloWorldGenerator() {
     yield 'hello';
@@ -19,3 +17,24 @@ function* helloWorldGenerator() {
     return 'ending';
   }
   var hw = helloWorldGenerator();
+const log = target => {
+    console.log(target)
+}
+@log
+class Person{
+    b= 2
+}
+class B{
+
+}
+
+// let fun = async () => {
+//     await 2
+// }
+
+let isHas = [1,2,3].includes(2);
+
+new Promise((resolve, reject) => {
+    resolve(100);
+});
+

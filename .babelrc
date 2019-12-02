@@ -1,7 +1,24 @@
 {
-    "presets":["@babel/preset-env"],
+    "presets": [
+        [
+            "@babel/preset-env",
+            // {
+            //     // "useBuiltIns": "usage",//动态引入polyfill
+            //     // "corejs": 3
+            // }
+        ]
+    ],
     "plugins": [
-        "@babel/plugin-transform-runtime",
-        ["@babel/plugin-proposal-class-properties", { "loose": true }]
+        [
+            "@babel/plugin-transform-runtime",{
+                "corejs": 3
+            }
+        ],
+        ["@babel/plugin-proposal-decorators", {
+            "legacy": true
+        }],
+        ["@babel/plugin-proposal-class-properties", {
+            "loose": true
+        }]
     ]
 }
