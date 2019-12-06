@@ -16,9 +16,9 @@ module.exports = {
     optimization: {
         minimize: true,
         minimizer: [
-            // new TerserJSPlugin({
-            //     exclude: /\/node_modules/
-            // }),
+            new TerserJSPlugin({
+                exclude: /\/node_modules/
+            }),
             new OptimizeCSSAssetsPlugin({})
         ]
 
