@@ -7,6 +7,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
 
 module.exports = {
+    entry: ['./src/index.js'],
+    output: {
+        filename: '[name].[hash:5].bundle.js',
+        path: path.resolve(__dirname, 'build'),
+        publicPath:'/'
+    },
     module: {
         rules: [
             {
@@ -51,7 +57,10 @@ module.exports = {
                         loader:'url-loader',
                         options:{
                             limit:8192,
+                            name:'[name].[hash:5].[ext]',
                             outputPath:'/images/',
+                            publicPath:'../images/'
+
                         }
                     }
                 ]

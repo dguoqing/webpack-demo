@@ -1,40 +1,33 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @babel/plugin-transform-decorators-legacy -D
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
 
 PATH: 
-  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\Administrator\AppData\Roaming\npm;F:\Microsoft VS Code\bin
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Users\87874\AppData\Local\Microsoft\WindowsApps;C:\Users\87874\AppData\Roaming\npm;E:\编译器\Microsoft VS Code\bin;C:\Users\87874\AppData\Local\Yarn\bin
 
 Yarn version: 
   1.19.2
 
 Node version: 
-  12.13.1
+  12.13.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@babel%2fplugin-transform-decorators-legacy: Not found
-      at Request.params.callback [as _callback] (C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66927:18)
-      at Request.self.callback (C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140586:22)
-      at Request.emit (events.js:210:5)
-      at Request.<anonymous> (C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141558:10)
-      at Request.emit (events.js:210:5)
-      at IncomingMessage.<anonymous> (C:\Users\Administrator\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141480:12)
-      at Object.onceWrapper (events.js:299:28)
-      at IncomingMessage.emit (events.js:215:7)
-      at endReadableNT (_stream_readable.js:1184:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: connect ETIMEDOUT 104.16.27.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1128:14)
 
 npm manifest: 
   {
     "devDependencies": {
       "@babel/core": "^7.7.4",
       "@babel/plugin-proposal-class-properties": "^7.7.4",
+      "@babel/plugin-proposal-decorators": "^7.7.4",
       "@babel/plugin-transform-runtime": "^7.7.4",
       "@babel/preset-env": "^7.7.4",
       "autoprefixer": "^9.7.2",
       "babel-loader": "^8.0.6",
+      "clean-webpack-plugin": "^3.0.0",
       "css-loader": "^3.2.0",
       "file-loader": "^5.0.2",
       "html-webpack-plugin": "^3.2.0",
@@ -48,15 +41,18 @@ npm manifest:
       "url-loader": "^3.0.0",
       "webpack": "^4.41.2",
       "webpack-cli": "^3.3.10",
-      "webpack-dev-server": "^3.9.0"
+      "webpack-dev-server": "^3.9.0",
+      "webpack-merge": "^4.2.2"
     },
     "scripts": {
-      "build": "webpack --config webpack.config.js",
-      "dev": "webpack-dev-server"
+      "build": "webpack --config webpack.config.prod.js",
+      "dev": "webpack-dev-server --config webpack.config.dev.js"
     },
     "dependencies": {
       "@babel/polyfill": "^7.7.0",
       "@babel/runtime": "^7.7.4",
+      "@babel/runtime-corejs3": "^7.7.4",
+      "core-js": "3",
       "postcss-import": "^12.0.1"
     }
   }
@@ -321,6 +317,15 @@ Lockfile:
       "@babel/helper-create-class-features-plugin" "^7.7.4"
       "@babel/helper-plugin-utils" "^7.0.0"
   
+  "@babel/plugin-proposal-decorators@^7.7.4":
+    version "7.7.4"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.7.4.tgz#58c1e21d21ea12f9f5f0a757e46e687b94a7ab2b"
+    integrity sha512-GftcVDcLCwVdzKmwOBDjATd548+IE+mBo7ttgatqNDR7VG7GqIuZPtRWlMLHbhTXhcnFZiGER8iIYl1n/imtsg==
+    dependencies:
+      "@babel/helper-create-class-features-plugin" "^7.7.4"
+      "@babel/helper-plugin-utils" "^7.0.0"
+      "@babel/plugin-syntax-decorators" "^7.7.4"
+  
   "@babel/plugin-proposal-dynamic-import@^7.7.4":
     version "7.7.4"
     resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-dynamic-import/-/plugin-proposal-dynamic-import-7.7.4.tgz#dde64a7f127691758cbfed6cf70de0fa5879d52d"
@@ -365,6 +370,13 @@ Lockfile:
     version "7.7.4"
     resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.7.4.tgz#331aaf310a10c80c44a66b238b6e49132bd3c889"
     integrity sha512-Li4+EjSpBgxcsmeEF8IFcfV/+yJGxHXDirDkEoyFjumuwbmfCVHUt0HuowD/iGM7OhIRyXJH9YXxqiH6N815+g==
+    dependencies:
+      "@babel/helper-plugin-utils" "^7.0.0"
+  
+  "@babel/plugin-syntax-decorators@^7.7.4":
+    version "7.7.4"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-decorators/-/plugin-syntax-decorators-7.7.4.tgz#3c91cfee2a111663ff3ac21b851140f5a52a4e0b"
+    integrity sha512-0oNLWNH4k5ZbBVfAwiTU53rKFWIeTh6ZlaWOXWJc4ywxs0tjz5fc3uZ6jKAnZSxN98eXVgg7bJIuzjX+3SXY+A==
     dependencies:
       "@babel/helper-plugin-utils" "^7.0.0"
   
@@ -722,6 +734,14 @@ Lockfile:
       js-levenshtein "^1.1.3"
       semver "^5.5.0"
   
+  "@babel/runtime-corejs3@^7.7.4":
+    version "7.7.4"
+    resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.7.4.tgz#f861adc1cecb9903dfd66ea97917f02ff8d79888"
+    integrity sha512-BBIEhzk8McXDcB3IbOi8zQPzzINUp4zcLesVlBSOcyGhzPUU8Xezk5GAG7Sy5GVhGmAO0zGd2qRSeY2g4Obqxw==
+    dependencies:
+      core-js-pure "^3.0.0"
+      regenerator-runtime "^0.13.2"
+  
   "@babel/runtime@^7.7.4":
     version "7.7.4"
     resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
@@ -762,6 +782,11 @@ Lockfile:
       lodash "^4.17.13"
       to-fast-properties "^2.0.0"
   
+  "@types/anymatch@*":
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
+    integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
+  
   "@types/events@*":
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -790,6 +815,44 @@ Lockfile:
     version "1.5.2"
     resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
     integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
+  
+  "@types/source-list-map@*":
+    version "0.1.2"
+    resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
+    integrity sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==
+  
+  "@types/tapable@*":
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
+    integrity sha512-78AdXtlhpCHT0K3EytMpn4JNxaf5tbqbLcbIRoQIHzpTIyjpxLQKRoxU55ujBXAtg3Nl2h/XWvfDa9dsMOd0pQ==
+  
+  "@types/uglify-js@*":
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-3.0.4.tgz#96beae23df6f561862a830b4288a49e86baac082"
+    integrity sha512-SudIN9TRJ+v8g5pTG8RRCqfqTMNqgWCKKd3vtynhGzkIIjxaicNAMuY5TRadJ6tzDu3Dotf3ngaMILtmOdmWEQ==
+    dependencies:
+      source-map "^0.6.1"
+  
+  "@types/webpack-sources@*":
+    version "0.1.5"
+    resolved "https://registry.yarnpkg.com/@types/webpack-sources/-/webpack-sources-0.1.5.tgz#be47c10f783d3d6efe1471ff7f042611bd464a92"
+    integrity sha512-zfvjpp7jiafSmrzJ2/i3LqOyTYTuJ7u1KOXlKgDlvsj9Rr0x7ZiYu5lZbXwobL7lmsRNtPXlBfmaUD8eU2Hu8w==
+    dependencies:
+      "@types/node" "*"
+      "@types/source-list-map" "*"
+      source-map "^0.6.1"
+  
+  "@types/webpack@^4.4.31":
+    version "4.41.0"
+    resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.0.tgz#b813a044d8b0dec7dfcd7622fdbe327bde06eb9a"
+    integrity sha512-tWkdf9nO0zFgAY/EumUKwrDUhraHKDqCPhwfFR/R8l0qnPdgb9le0Gzhvb7uzVpouuDGBgiE//ZdY+5jcZy2TA==
+    dependencies:
+      "@types/anymatch" "*"
+      "@types/node" "*"
+      "@types/tapable" "*"
+      "@types/uglify-js" "*"
+      "@types/webpack-sources" "*"
+      source-map "^0.6.0"
   
   "@webassemblyjs/ast@1.8.5":
     version "1.8.5"
@@ -1617,6 +1680,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
     integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
   
+  clean-webpack-plugin@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/clean-webpack-plugin/-/clean-webpack-plugin-3.0.0.tgz#a99d8ec34c1c628a4541567aa7b457446460c62b"
+    integrity sha512-MciirUH5r+cYLGCOL5JX/ZLzOZbVr1ot3Fw+KcvbhUb6PM+yycqd9ZhIlcigQ5gl+XhppNmw3bEFuaaMNyLj3A==
+    dependencies:
+      "@types/webpack" "^4.4.31"
+      del "^4.1.1"
+  
   cliui@^4.0.0:
     version "4.1.0"
     resolved "https://registry.yarnpkg.com/cliui/-/cliui-4.1.0.tgz#348422dbe82d800b3022eef4f6ac10bf2e4d1b49"
@@ -1835,6 +1906,16 @@ Lockfile:
     dependencies:
       browserslist "^4.7.3"
       semver "^6.3.0"
+  
+  core-js-pure@^3.0.0:
+    version "3.4.5"
+    resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.4.5.tgz#284474cb48d134e26e6e314cb89986c6c59480fb"
+    integrity sha512-v3BoUOhmBvs4Z17jG/oM7qyv+tEEMvD1FYDDfxa6uD5W2rA/DpKvhvmyrBzxuMQTa/91UQKisaiqe0+0GuL2oA==
+  
+  core-js@3:
+    version "3.4.5"
+    resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.5.tgz#3dda65611d95699b5eb7742ea451ea052d37aa65"
+    integrity sha512-OuvejWH6vIaUo59Ndlh89purNm4DCIy/v3QoYlcGnn+PkYI8BhNHfCuAESrWX+ZPfq9JccVJ+XXgOMy77PJexg==
   
   core-js@^2.6.5:
     version "2.6.10"
@@ -3855,7 +3936,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
     integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
   
-  lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.3, lodash@^4.17.5:
+  lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.5:
     version "4.17.15"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
     integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -6558,6 +6639,13 @@ Lockfile:
     dependencies:
       ansi-colors "^3.0.0"
       uuid "^3.3.2"
+  
+  webpack-merge@^4.2.2:
+    version "4.2.2"
+    resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.2.2.tgz#a27c52ea783d1398afd2087f547d7b9d2f43634d"
+    integrity sha512-TUE1UGoTX2Cd42j3krGYqObZbOD+xF7u28WB7tfUordytSjbWTIjK/8V0amkBfTYN4/pB/GIDlJZZ657BGG19g==
+    dependencies:
+      lodash "^4.17.15"
   
   webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-sources@^1.4.3:
     version "1.4.3"

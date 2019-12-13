@@ -5,11 +5,6 @@ const webpack = require('webpack')
 
 module.exports = smart(webpackBase,{
     mode: 'development',
-    entry: ['./src/index.js'],
-    output: {
-        filename: '[name].[hash:5],bundle.js',
-        path: path.resolve(__dirname, 'build')
-    },
     devtool:'cheap-module-eval-source-map',
     devServer: {
         port:8000,
