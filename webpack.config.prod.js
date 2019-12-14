@@ -5,6 +5,7 @@ const webpack = require('webpack')
 const webpackBase = require('./webpack.config.base')
 const { smart } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 
 module.exports = smart(webpackBase, {
@@ -12,9 +13,9 @@ module.exports = smart(webpackBase, {
     optimization: {
         minimize: true,
         minimizer: [
-            new TerserJSPlugin({
-                exclude: /node_modules/
-            }),
+            // new TerserJSPlugin({
+            //     exclude: /node_modules/
+            // }),
             new OptimizeCSSAssetsPlugin({})
         ]
     },
@@ -22,5 +23,12 @@ module.exports = smart(webpackBase, {
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns:[path.resolve(__dirname, './build')]
         }),
+        new webpack.DllReferencePlugin({
+            context: path.join(__dirname),
+            manifest: require('./build/vendor-manifest.json'),
+          }),
+          new AddAssetHtmlPlugin({
+            filepath: path.resolve(__dirname, './build/*.dll.js'),
+          }),
     ]
 })
