@@ -11,7 +11,13 @@ module.exports = smart(webpackBase,{
         host:'0.0.0.0',
         progress:true,
         compress: true,
-        contentBase:'/build'
-
-    }
+        hot:true,
+        contentBase: path.resolve(__dirname, "./build"),
+        historyApiFallback: true, 
+        hotOnly:true, //即使HMR没有生效 浏览器也不会自动更新 必须设置
+    },
+    plugins:[
+        new webpack.NamedModulesPlugin(), // 打印出那些变化文件的路径
+        new webpack.HotModuleReplacementPlugin()
+    ]
 })
