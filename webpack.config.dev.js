@@ -11,6 +11,7 @@ module.exports = smart(webpackBase,{
         host:'0.0.0.0',
         progress:true,
         compress: true,
+        inline:true,
         hot:true,
         contentBase: path.resolve(__dirname, "./build"),
         historyApiFallback: true, 

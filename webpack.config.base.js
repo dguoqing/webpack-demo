@@ -7,19 +7,22 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
 const Happypack = require('happypack')
 const os = require('os')
-const happyThreadPool = Happypack.ThreadPool({size: os.cpus().length})
+const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
 
 //3927
 module.exports = {
-    entry: ['./src/index.js'],
+    entry: ['react-hot-loader/patch', './src/index.js'],
     output: {
         filename: '[name].[hash:5].bundle.js',
         path: path.resolve(__dirname, 'build'),
-        chunkFilename:'[chunkhash].chunk.js'
+        chunkFilename: '[chunkhash].chunk.js'
     },
-    resolve:{
-        extensions:['.js','.jsx','.css','.less','.scss','.json']
+    resolve: {
+        extensions: ['.js', '.jsx', '.css', '.less', '.scss', '.json'],
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+          },
     },
     module: {
         rules: [
@@ -54,19 +57,24 @@ module.exports = {
                 ]
             },
             {
-                test:/\.js$/,
-                use:['happypack/loader?id=babel'],
-                exclude:/node_modules/
+                test: /\.js$/,
+                use: [
+                    {
+                        loader: 'react-hot-loader/webpack'
+                    },
+                    'happypack/loader?id=babel'
+                ],
+                exclude: /node_modules/
             },
             {
-                test:/\.(png|jpg|gif)$/,
-                use:[
+                test: /\.(png|jpg|gif)$/,
+                use: [
                     {
-                        loader:'url-loader',
-                        options:{
-                            limit:8192,
-                            name:'[name].[hash:5].[ext]',
-                            outputPath:'images/',
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192,
+                            name: '[name].[hash:5].[ext]',
+                            outputPath: 'images/',
                         }
                     }
                 ]
@@ -85,7 +93,7 @@ module.exports = {
             }
         }),
         new webpack.ProvidePlugin({
-            React:'react'
+            React: 'react'
         }),
         new Happypack({
             //用id来标识 happypack处理那里类文件
@@ -103,8 +111,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].[hash:5].css',
             chunkFilename: '[id].[chunkhash].css',
-            
+
         })
-        
+
     ],
 }
