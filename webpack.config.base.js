@@ -12,7 +12,7 @@ const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
 //3927
 module.exports = {
-    entry: ['react-hot-loader/patch', './src/index.js'],
+    entry: ['react-hot-loader/patch', './src/index.ts'],
     output: {
         filename: '[name].[hash:5].bundle.js',
         path: path.resolve(__dirname, 'build'),
@@ -55,6 +55,16 @@ module.exports = {
                     },
                     'less-loader'
                 ]
+            },
+            {
+                test: /\.ts$/,
+                use: [
+                    {
+                        loader: 'ts-loader'
+                    },
+                    
+                ],
+                exclude: /node_modules/
             },
             {
                 test: /\.js$/,

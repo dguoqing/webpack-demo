@@ -1,5 +1,5 @@
 
-
+import * as React from 'react';
 class Demo extends React.Component {
     constructor(props){
         super(props)
