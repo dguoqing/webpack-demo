@@ -26,7 +26,7 @@ module.exports = smart(webpackBase, {
             }),
             new OptimizeCSSAssetsPlugin({})
         ],
-        splitChunks: {
+        splitChunks: {  //分割代码块多页面应用会用到
             chunks: "all",
             minSize: 30000,
             minChunks: 1,
@@ -35,9 +35,14 @@ module.exports = smart(webpackBase, {
             automaticNameDelimiter: '~',
             name: true,
             cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
+                common:{        //公共模块
+                    chunks:'initial',
+                    minSize:0,
+                    minChunks:2,
+                },
+                vendors: {      //抽离第三方
+                    test: /[\\/]node_modules[\\/]/,     //抽离出来
+                    priority: 1,   //权重
                 },
                 // default: {
                 //     minChunks: 2,

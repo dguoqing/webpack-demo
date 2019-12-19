@@ -1,5 +1,6 @@
 
 import Demo from './demo'
+
 class App extends React.Component {
     constructor(props){
         super(props)
@@ -9,6 +10,9 @@ class App extends React.Component {
         this.onClick = this.onClick.bind(this)
     }
     onClick() {
+        import('./tool').then(data => {
+            console.log(data)
+        })
         this.setState({
             Test:'Test1'
         })
