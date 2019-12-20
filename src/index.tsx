@@ -1,16 +1,21 @@
-import * as ReactDOM from 'react-dom';
+// import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 // import { AppContainer } from 'react-hot-loader'
-import { hot } from 'react-hot-loader/root'
+// import { hot } from 'react-hot-loader/root'
 
-import App from './pages/App'
+// import App from './pages/App'
 
 import './assets/style/base.css'
 import './assets/style/index.less'
 
 
+export class ImageGallery extends React.Component<any, any> {
 
-hot(App)
+}
+
+export default ImageGallery;
+
+// hot(App)
 
 
 // const render = App => {
@@ -34,10 +39,10 @@ hot(App)
 //     })
 // }
 
-const render = App => {
-    ReactDOM.render(
-        <App />,
-    document.getElementById('root'))
-}
+// const render = App => {
+//     ReactDOM.render(
+//         <App />,
+//     document.getElementById('root'))
+// }
 
-render(App)
+// render(App)

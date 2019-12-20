@@ -12,14 +12,14 @@ const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
 //3927
 module.exports = {
-    entry: ['react-hot-loader/patch', './src/index.ts'],
+    entry: ['./src/index.tsx'],
     output: {
         filename: '[name].[hash:5].bundle.js',
         path: path.resolve(__dirname, 'build'),
         chunkFilename: '[chunkhash].chunk.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.css', '.less', '.scss', '.json'],
+        extensions: [".ts", ".tsx",'.js', '.jsx', '.css', '.less', '.scss', '.json'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
           },
@@ -57,10 +57,10 @@ module.exports = {
                 ]
             },
             {
-                test: /\.ts$/,
+                test: /\.tsx$/,
                 use: [
                     {
-                        loader: 'ts-loader'
+                        loader: 'awesome-typescript-loader'
                     },
                     
                 ],
@@ -76,6 +76,7 @@ module.exports = {
                 ],
                 exclude: /node_modules/
             },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
@@ -91,6 +92,10 @@ module.exports = {
             }
         ]
     },
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    },
     plugins: [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
@@ -102,9 +107,9 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
-        new webpack.ProvidePlugin({
-            React: 'react'
-        }),
+        // new webpack.ProvidePlugin({
+        //     React: 'react'
+        // }),
         new Happypack({
             //用id来标识 happypack处理那里类文件
             id: 'babel',
