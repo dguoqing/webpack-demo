@@ -12,7 +12,7 @@ const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
 //3927
 module.exports = {
-    entry: ['./src/index.tsx'],
+    entry: ['react-hot-loader/patch','./src/index.tsx'],
     output: {
         filename: '[name].[hash:5].bundle.js',
         path: path.resolve(__dirname, 'build'),
@@ -92,10 +92,10 @@ module.exports = {
             }
         ]
     },
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
-    },
+    // externals: {
+    //     "react": "React",
+    //     "react-dom": "ReactDOM"
+    // },
     plugins: [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
