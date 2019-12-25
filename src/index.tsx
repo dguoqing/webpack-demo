@@ -9,9 +9,25 @@ import './assets/style/base.css'
 import './assets/style/index.less'
 
 
-
-
 hot(App)
+
+
+const render = (App: any) => {
+    ReactDOM.render(
+        <App />,
+    document.getElementById('root'))
+}
+
+render(App)
+
+
+
+
+
+
+
+
+
 
 /**
  * 
@@ -38,10 +54,3 @@ if (module.hot) {
 */
 
 
-const render = (App: any) => {
-    ReactDOM.render(
-        <App />,
-    document.getElementById('root'))
-}
-
-render(App)

@@ -3,10 +3,10 @@
         [
             "@babel/preset-env",
             
-            // {
-            //     // "useBuiltIns": "usage",//动态引入polyfill
-            //     // "corejs": 3
-            // }
+            {
+                // "useBuiltIns": "usage",//动态引入polyfill
+                // "corejs": 3
+            }
         ],
         ["@babel/preset-react"]
     ],
