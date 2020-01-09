@@ -4,11 +4,11 @@ import { useParams, useRouteMatch } from 'react-router-dom'
 interface Props {
     name: String
 }
-const About = (Props: Props) => {
+const About = (props: Props) => {
     let { id } = useParams()
     let { path, url } = useRouteMatch()
 
-    return (<div>{Props.name}id : {id}
+    return (<div>{props.name}id : {id}
         <p>path:{path}</p>
         <p>url:{url}</p>
     </div>)
