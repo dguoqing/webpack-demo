@@ -2,23 +2,37 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 // import { AppContainer } from 'react-hot-loader'
 import { hot } from 'react-hot-loader/root'
-
-import {App} from './pages/App'
+import {
+    BrowserRouter,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import { Provider } from 'react-redux'
+import store from './redux'
+import App from './pages/App'
+import Router from './router'
 
 import './assets/style/base.css'
 import './assets/style/index.less'
+import 'antd/dist/antd.css'
 
 
-hot(App)
 
+hot(Router)
 
-const render = (App: any) => {
+const render = (Router: any) => {
     ReactDOM.render(
-        <App />,
-    document.getElementById('root'))
+        <Provider store={store()}>
+            <BrowserRouter>
+                <Router />
+            </BrowserRouter>
+        </Provider>
+        ,
+        document.getElementById('root') as HTMLElement)
 }
 
-render(App)
+render(Router)
 
 
 
@@ -30,7 +44,7 @@ render(App)
 
 
 /**
- * 
+ *
  * @description 老版本的热更新
  *
 const render = App => {

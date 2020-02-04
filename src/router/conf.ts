@@ -2,37 +2,55 @@
  * @author guoqing.dong
  * 
  */
+
+import * as React from 'react'
 import BaseConfig from '../conf'
+import Lazy from './lazy'
 const { ROOTPATH } = BaseConfig;
-
-import Home from './../pages/Home';
-import Login from './../pages/Login/index';
-import User from './../pages/User/index';
-interface RouteType {
-    path:string,
-    component:any,
-    key:string,
-    
-}
-
 console.log(BaseConfig)
 
-const routes:Array<object> = [
+const Test = Lazy(React.lazy(() => import('../pages/Test')))
+
+const Home = Lazy(React.lazy(() => import('../pages/Home')));
+const App = Lazy(React.lazy(() => import('../pages/App')))
+const Login = Lazy(React.lazy(() => import('../pages/Login/index')))
+const User = Lazy(React.lazy(() => import('../pages/User')))
+
+
+
+const routes = [
     {
         path:ROOTPATH,
-        component:Home
+        component:App,
+        // exact: true,
+        key:'App',
+        routes:[
+            {
+                path:ROOTPATH + '/test',
+                component:Test,
+                key:'Test',
+                exact: true, 
+            },
+            {
+                path:ROOTPATH + '/home',
+                component:Home,
+                key:'Home',
+                exact: true,
+
+            },
+            {
+                path:ROOTPATH + '/login',
+                component:Login,
+                key:'Login'
+            },
+            {
+                path:ROOTPATH + '/user',
+                component:User,
+                key:'User'
+            },
+        ]
     },
-    {
-        path:ROOTPATH + 'login',
-        component:Login
-    },
-    {
-        path:ROOTPATH + 'user',
-        component:User
-    },
+    
 ]
 
-const createRoutes = () => {
-    return routes
-}
-export default createRoutes
+export default routes

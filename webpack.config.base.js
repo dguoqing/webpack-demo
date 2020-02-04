@@ -9,29 +9,33 @@ const Happypack = require('happypack')
 const os = require('os')
 const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
+const devMode = process.env.NODE_ENV !== 'production';
+console.log(process.env.NODE_ENV,devMode)
 
 //3927
 module.exports = {
-    entry: ['react-hot-loader/patch','./src/index.tsx'],
+    entry: ['react-hot-loader/patch', './src/index.tsx'],
     output: {
         filename: '[name].[hash:5].bundle.js',
         path: path.resolve(__dirname, 'build'),
         chunkFilename: '[chunkhash].chunk.js'
     },
     resolve: {
-        extensions: [".ts", ".tsx",'.js', '.jsx', '.css', '.less', '.scss', '.json'],
+        extensions: [".ts", ".tsx", '.js', '.jsx', '.css', '.less', '.scss', '.json'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
-          },
+        },
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.css$/,
-                use: [
-                    {
+                use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
+                            // only enable hot in development
+                            hmr: devMode,
+                            // if hmr does not work, this is a forceful method.
+                            reloadAll: true,
                         }
                     },
                     'css-loader',
@@ -42,8 +46,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [
-                    {
+                use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
 
@@ -57,38 +60,39 @@ module.exports = {
                 ]
             },
             {
-                test: /\.tsx$/,
-                use: [
-                    {
+                test: /\.(tsx|ts)$/,
+                use: [{
                         loader: 'awesome-typescript-loader'
                     },
-                    
+
                 ],
                 exclude: /node_modules/
             },
             {
                 test: /\.js$/,
-                use: [
-                    {
+                use: [{
                         loader: 'react-hot-loader/webpack'
                     },
-                    'happypack/loader?id=babel'
+                    'happypack/loader?id=babel',
+                    'async-catch-loader'
                 ],
                 exclude: /node_modules/
             },
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader"
+            },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: '[name].[hash:5].[ext]',
-                            outputPath: 'images/',
-                        }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192,
+                        name: '[name].[hash:5].[ext]',
+                        outputPath: 'images/',
                     }
-                ]
+                }]
             }
         ]
     },
@@ -124,8 +128,8 @@ module.exports = {
 
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[hash:5].css',
-            chunkFilename: '[id].[chunkhash].css',
+            filename: devMode ? '[name].css' : '[name].[hash:5].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
 
         })
 

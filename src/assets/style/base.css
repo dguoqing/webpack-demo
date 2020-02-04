@@ -12,7 +12,7 @@ table { border-collapse:collapse; }
 body {
     font:12px/150% Arial,Verdana,"\5b8b\4f53";
     color:#666;
-    background: #cccccc;
+    background: #fff;
 }
 .clearfix:before,.clearfix:after {  /*清楚浮动*/
     content:"";

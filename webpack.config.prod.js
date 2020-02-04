@@ -63,5 +63,10 @@ module.exports = smart(webpackBase, {
         new AddAssetHtmlPlugin({
             filepath: path.resolve(__dirname, './dll/*.dll.js'),
         }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        })
     ]
 })

@@ -1,42 +1,79 @@
 import * as React from "react";
 import {
-    BrowserRouter as Router,
+    BrowserRouter,
     Switch,
     Route,
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
+import { Layout } from 'antd'
+import Footer from '../components/Footer'
+import HooksTest from './HooksTest'
 
-import Home from './Home';
-import About from './About';
+import '../assets/style/header.less'
 
-export interface AppProps { compiler: string; framework: string; }
+const { Header } = Layout
 
-export const App = (props: AppProps) => {
+
+
+
+// export interface AppProps { compiler: string; framework: string;cd?:Function  }
+// export class App extends React.Component {
+//     constructor(props) {
+//         super(props)
+//     }
+//     render() {
+//         console.log(this)
+//         return <div>
+//             <ul>
+//                 <li>
+//                     <Link to="/">Home</Link>
+//                 </li>
+//                 <li>
+//                     <Link to="/login">login</Link>
+//                 </li>
+//                 <li>
+//                     <Link to="/user">user</Link>
+//                 </li>
+//             </ul>
+//             <div>
+//                 {this.props.cd && this.props.cd()}
+//             </div>
+//         </div>
+//     }
+// }
+const App = (props: any) => {
     return (
         <>
-        <div>
-            <Router>
-                <ul>
+            <Header>
+                <ul className='header-nav'>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/">ap</Link>
                     </li>
                     <li>
-                        <Link to="/about/55555555555">About</Link>
+                        <Link to="/home">Home</Link>
                     </li>
                     <li>
-                        <Link to="/other">Other</Link>
+                        <Link to="/login">login</Link>
+                    </li>
+                    <li>
+                        <Link to="/user">user</Link>
+                    </li>
+                    <li>
+                        <Link to="/test">Test</Link>
                     </li>
                 </ul>
-                <Switch>
-                    <Route exact path='/'>
-                        <Home />
-                    </Route>
-                    <Route exact path='/about/:id'>
-                        <About name='cc'/>
-                    </Route>
-                </Switch>
-            </Router>
-        </div>
-    </>
+            </Header>
+
+            <div>
+
+                <div style={{ background: '#ccc', height: '100%', width: '100%' }}>
+                    {props.routes}
+                </div>
+            </div>
+            <Footer />
+            <HooksTest />
+        </>
     )
 };
+
+export default App
