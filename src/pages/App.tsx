@@ -41,7 +41,8 @@ const { Header } = Layout
 //         </div>
 //     }
 // }
-const App = (props: any) => {
+const App:React.FC = (props: any) => {
+    
     return (
         <>
             <Header>

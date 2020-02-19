@@ -10,14 +10,14 @@ const os = require('os')
 const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
 const devMode = process.env.NODE_ENV !== 'production';
-console.log(process.env.NODE_ENV,devMode)
+
 
 //3927
 module.exports = {
     entry: ['react-hot-loader/patch', './src/index.tsx'],
     output: {
         filename: '[name].[hash:5].bundle.js',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         chunkFilename: '[chunkhash].chunk.js'
     },
     resolve: {
@@ -25,6 +25,13 @@ module.exports = {
         alias: {
             'react-dom': '@hot-loader/react-dom',
         },
+    }, 
+    //loaders文件夹下是自己写的loader
+    resolveLoader:{
+        // alias:{
+        //     'banner-loader':path.resolve(__dirname,'loaders','banner-loader')
+        // },
+        modules:['node_modules',path.resolve(__dirname, 'loaders')], 
     },
     module: {
         rules: [{
@@ -61,10 +68,18 @@ module.exports = {
             },
             {
                 test: /\.(tsx|ts)$/,
-                use: [{
+                use: [                  
+                    {
                         loader: 'awesome-typescript-loader'
                     },
-
+                    //手写的loader  注释
+                    // {
+                    //     loader:'banner-loader',
+                    //     options:{
+                    //         text:'dongguoqingmmmm',
+                    //         filename:path.resolve(__dirname,'banner.js')
+                    //     }
+                    // },
                 ],
                 exclude: /node_modules/
             },
@@ -72,9 +87,9 @@ module.exports = {
                 test: /\.js$/,
                 use: [{
                         loader: 'react-hot-loader/webpack'
-                    },
+                    },                   
                     'happypack/loader?id=babel',
-                    'async-catch-loader'
+                    'async-catch-loader'                  
                 ],
                 exclude: /node_modules/
             },

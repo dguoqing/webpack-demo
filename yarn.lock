@@ -7087,6 +7087,14 @@ schema-utils@^2.0.0, schema-utils@^2.0.1, schema-utils@^2.5.0:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"
 
+schema-utils@^2.6.4:
+  version "2.6.4"
+  resolved "https://registry.npm.taobao.org/schema-utils/download/schema-utils-2.6.4.tgz?cache=0&sync_timestamp=1579261789269&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fschema-utils%2Fdownload%2Fschema-utils-2.6.4.tgz#a27efbf6e4e78689d91872ee3ccfa57d7bdd0f53"
+  integrity sha1-on779uTnhonZGHLuPM+lfXvdD1M=
+  dependencies:
+    ajv "^6.10.2"
+    ajv-keywords "^3.4.1"
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"

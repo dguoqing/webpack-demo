@@ -7,15 +7,16 @@ const { smart } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
+const FileListPlugin = require('./plugins/FileListPlugin') // 手写插件，测试
 
 module.exports = smart(webpackBase, {
     mode: 'production',
     output: {
         // 输出目录
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
         // 文件名称
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+        filename: '[name].[contenthash:8].js',
+        chunkFilename: '[name].[contenthash:8].js',
         publicPath: '/',
     },
     optimization: {
@@ -54,7 +55,7 @@ module.exports = smart(webpackBase, {
     },
     plugins: [
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, './build')]
+            cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, './dist')]
         }),
         new webpack.DllReferencePlugin({
             context: path.join(__dirname),
@@ -67,6 +68,9 @@ module.exports = smart(webpackBase, {
             'process.env': {
                 NODE_ENV: '"production"'
             }
+        }),
+        new FileListPlugin({
+            filename:'list.md'
         })
     ]
 })

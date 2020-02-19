@@ -13,7 +13,7 @@ module.exports = smart(webpackBase,{
         compress: true,
         inline:true,
         hot:true,
-        contentBase: path.resolve(__dirname, "./build"),
+        contentBase: path.resolve(__dirname, "./dist"),
         historyApiFallback: true, 
         hotOnly:true, //即使HMR没有生效 浏览器也不会自动更新 必须设置
 
