@@ -1,18 +1,53 @@
-.header-nav {
-    li {
-        float: left;
-        width: 100px;
-        height: 60px;
-        text-align: center;
-        line-height: 60px;
-        color: #ffffff;
+.ant-layout-header {
+    // background: #1b2945 !important;
+}
 
-        a {
-            color: red;
+header {
+    width: 100%;
+    height: 60px;
+    font-size: 14px;
 
-            &:hover {
-                color: #0099ff;
+    a {
+        color: #aeb9d8;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+
+    .header-left {
+        .header-nav {
+            height: 60px;
+
+            li {
+                float: left;
+                width: 100px;
+                text-align: center;
+                line-height: 60px;
+                color: #ffffff;
+
             }
+        }
+    }
+
+    .header-right {
+        .btn-login {
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+
+        }
+        .btn-regisiter {
+            display: inline-block;
+            width: 100px;
+            padding: 0 20px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border: 1px solid #357ce1;
+            letter-spacing: 0.29px;
+            border-radius: 4px;
+            text-align-last: justify;
         }
     }
 }

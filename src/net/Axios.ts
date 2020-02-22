@@ -6,15 +6,24 @@
 
 import axios from 'axios'
 import cookie from 'js-cookie'
+import { message } from 'antd'
 import configs from '../conf'
 const { baseUrl } = configs
 const CancelToken = axios.CancelToken
+
+export interface RequestTip {
+    toast?: boolean,//是否全局提示
+    msg?: string,
+}
+export interface UrlType extends RequestTip {
+    url:string,
+}
 
 class Axios {
     private baseURL: string;
     private loading: boolean = false;
     private requestList: any[] = []; //每次发送请求将请求的url写入数组中
-    private sources:any = {}
+    private sources: any = {}
 
     constructor() {
         this.baseURL = baseUrl;
@@ -38,7 +47,7 @@ class Axios {
 
         //请求拦截
         instance.interceptors.request.use((config: any): object => {
-            const {url,data} = config;
+            const { url, data } = config;
             const request = JSON.stringify(url) + JSON.stringify(data)
             config.cancelToken = new CancelToken((cancel) => {
                 this.sources[request] = cancel
@@ -47,9 +56,9 @@ class Axios {
             if (this.requestList.length) {
                 this.loading = true
             }
-            if(this.requestList.includes(request)){
+            if (this.requestList.includes(request)) {
                 this.sources[request]('取消重复请求')
-            }else{
+            } else {
 
                 this.requestList.push(config.url)
             }
@@ -73,8 +82,25 @@ class Axios {
             return Promise.reject(err)
         })
     }
+    urlType(url: string | UrlType):UrlType{
+        if(typeof url === 'string'){
+            return {
+                url,
+            }
+        }else if(typeof url == 'object'){
+            return {
+                ...url
+            }
+        }else{
+            console.error('url错误')
+            return {
+                url:''
+            }
+        }
+    }
+
     //请求
-    public request(options: any): any {
+    public request(options: any, { toast, msg }: RequestTip = { toast: false, msg: '' }): any {
         const instance = axios.create();
         options = Object.assign({}, this.getInstanceConfig(), options)
         this.interceptors(instance)
@@ -84,8 +110,10 @@ class Axios {
                 const result: any = res.data;
 
                 if (result.code === 0) {
+                    toast && message.success(msg || result.msg)
                     resolve(result.data)
                 } else {
+                    message.error(msg || result.msg)
                     reject(result.msg)
                 }
             }).catch((err: any) => {
@@ -95,8 +123,9 @@ class Axios {
             console.error(err)
         })
     }
-    public get(url: string, params?: any, config?: object): any {
+    public get(url: string | UrlType, params?: any, config?: object): any {
         console.log(this)
+        const {} = this.urlType(url)
         return this.request({
             method: 'get',
             url,

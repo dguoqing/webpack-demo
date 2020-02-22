@@ -1,17 +1,23 @@
 
 import * as React from 'react'
-import { connect, } from 'react-redux'
+import { connect, } from 'react-redux';
+import { Layout } from 'antd'
 
-class Footer extends React.Component<any>{
-    constructor(props:any){
+import '../assets/style/footer.less'
+const { Footer } = Layout
+
+class Foot extends React.Component<any>{
+    constructor(props: any) {
         super(props)
     }
-    render(){
+    render() {
         console.log(this.props)
-        return <footer>
-            footer:
+        return <Footer style={{ textAlign: 'center', backgroundColor: '#001529' }}>
+            <footer>
+                footer:
             {this.props.count}
-        </footer>
+            </footer>
+        </Footer>
     }
 }
-export default connect(({test}:any):any =>({count:test.count}))(Footer)
+export default connect(({ test }: any): any => ({ count: test.count }))(Foot)

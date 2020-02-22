@@ -7,11 +7,13 @@ import {
 } from "react-router-dom";
 import { Layout } from 'antd'
 import Footer from '../components/Footer'
+import Header from '../components/Header'
 import HooksTest from './HooksTest'
 
 import '../assets/style/header.less'
+import '../assets/style/app.less'
 
-const { Header } = Layout
+const { Content } = Layout
 
 
 
@@ -41,39 +43,28 @@ const { Header } = Layout
 //         </div>
 //     }
 // }
-const App:React.FC = (props: any) => {
-    
+const App: React.FC = (props: any) => {
+
     return (
-        <>
-            <Header>
-                <ul className='header-nav'>
-                    <li>
-                        <Link to="/">ap</Link>
-                    </li>
-                    <li>
-                        <Link to="/home">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">login</Link>
-                    </li>
-                    <li>
-                        <Link to="/user">user</Link>
-                    </li>
-                    <li>
-                        <Link to="/test">Test</Link>
-                    </li>
-                </ul>
-            </Header>
+        <div className='main'>
+            <Layout>
 
-            <div>
-
-                <div style={{ background: '#ccc', height: '100%', width: '100%' }}>
-                    {props.routes}
+                <Header />
+                <div className='app-content'>
+                    <Content>
+                        <div style={{ height: '100%', width: '100%', textAlign: 'center' }}>
+                            {props.routes}
+                        </div>
+                    </Content>
+                    <HooksTest />
                 </div>
-            </div>
-            <Footer />
-            <HooksTest />
-        </>
+
+
+
+                <Footer />
+
+            </Layout>
+        </div>
     )
 };
 
