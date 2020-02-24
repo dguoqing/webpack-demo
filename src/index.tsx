@@ -3,6 +3,7 @@ import * as React from 'react';
 // import { AppContainer } from 'react-hot-loader'
 import { hot } from 'react-hot-loader/root'
 import {
+    HashRouter,
     BrowserRouter,
     Switch,
     Route,
@@ -24,9 +25,9 @@ hot(Router)
 const render = (Router: any) => {
     ReactDOM.render(
         <Provider store={store()}>
-            <BrowserRouter>
+            <HashRouter>
                 <Router />
-            </BrowserRouter>
+            </HashRouter>
         </Provider>
         ,
         document.getElementById('root') as HTMLElement)
