@@ -8,8 +8,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //存user数据
 const userMap = new Map([
-    ['admin',{
-        username:'admin',
+    ['dgq',{
+        username:'dgq',
         password:'111111',
         remember:false,
     }]

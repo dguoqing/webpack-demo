@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import cookie from 'js-cookie'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { get, post } from '../../net'
 import './login.less'
@@ -22,6 +23,7 @@ class Login extends React.Component<any> {
             if (!err) {
                 const result:any = await post({url:'/login',toast:true}, values)
                 if(result.flg){
+                    cookie.set('username',result.username)
                     setTimeout(() => {
                         this.props.history.push('/user')
                     }, 500)

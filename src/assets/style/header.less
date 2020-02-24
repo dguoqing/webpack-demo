@@ -37,6 +37,7 @@ header {
             text-align: center;
 
         }
+
         .btn-regisiter {
             display: inline-block;
             width: 100px;
@@ -48,6 +49,50 @@ header {
             letter-spacing: 0.29px;
             border-radius: 4px;
             text-align-last: justify;
+        }
+
+        .header-user {
+            // background-color:green;
+            width: 140px;
+            line-height: 64px;
+            text-align: center;
+            position: relative;
+            .user-touxiang {
+                color: '#aeb9d8';
+                font-size: '24px';
+            }
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                .header-user-hidden {
+                    display: block;
+                }
+                .user-touxiang {
+                    color: '#fff';
+                    font-size: '24px';
+                }
+                background-color: #001b36;
+            }
+
+            .header-user-hidden {
+                position: absolute;
+                background-color: #001529;
+                width: 140px;
+                display: none;
+
+                li {
+                    height: 60px;
+                    line-height: 60px;
+
+                    &:hover {
+                        background-color: #001b36;
+                    }
+                }
+            }
         }
     }
 }
