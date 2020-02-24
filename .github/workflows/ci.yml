@@ -21,4 +21,4 @@ jobs:
       with:
         ACCESS_TOKEN: ${{ secrets.webpackDemoToken }}
         BRANCH: gh-pages
-        FOLDER: build
+        FOLDER: dist
