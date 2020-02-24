@@ -1,9 +1,9 @@
 ##  文件名           资源大小
 - main.css           2735
-- main.1601d500.js           27879
+- main.59e76509.js           27879
 - 1.css           532518
-- vendors~main.743c6331.js           2489944
-- vendors~main.743c6331.js.LICENSE.txt           1258
+- vendors~main.51a9ecf2.js           2489944
+- vendors~main.51a9ecf2.js.LICENSE.txt           1258
 - vendor.dll.js           8567
-- index.html           1966
-- 404.html           2210
+- index.html           2014
+- 404.html           2014
