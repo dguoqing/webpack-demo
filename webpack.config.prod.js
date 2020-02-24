@@ -17,7 +17,7 @@ module.exports = smart(webpackBase, {
         // 文件名称
         filename: '[name].[contenthash:8].js',
         chunkFilename: '[name].[contenthash:8].js',
-        publicPath: '/webpack-demo',
+        publicPath: '/',
     },
     optimization: {
         minimize: true,
