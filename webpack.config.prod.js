@@ -6,6 +6,7 @@ const webpackBase = require('./webpack.config.base')
 const { smart } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const FileListPlugin = require('./plugins/FileListPlugin') // 手写插件，测试
 
@@ -56,6 +57,15 @@ module.exports = smart(webpackBase, {
     plugins: [
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, './dist')]
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/404.html',
+            filename: '404.html',
+            hash: true,
+            minify: {
+                removeAttributeQuotes: true,
+                collapseWhitespace: true
+            }
         }),
         new webpack.DllReferencePlugin({
             context: path.join(__dirname),
