@@ -1,9 +1,10 @@
 ##  文件名           资源大小
 - main.css           2735
-- main.0b0afe08.js           27876
+- main.38853d7b.js           27876
 - 1.css           532518
-- vendors~main.6bb27ce7.js           2489944
-- vendors~main.6bb27ce7.js.LICENSE.txt           1258
+- vendors~main.41c1c9a9.js           2489944
+- vendors~main.41c1c9a9.js.LICENSE.txt           1258
+- favicon.ico           11685
 - vendor.dll.js           8567
-- index.html           2014
+- index.html           2088
 - 404.html           2014
