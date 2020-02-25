@@ -120,7 +120,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            title:'总有一天，你会放下稍许不舍和遗憾，带上爱开始新生活',
+            title:'总有一天，你会放下稍许不舍和遗憾，带上爱开始新生活 | 个人网站 | web前端',
             favicon:'favicon.ico',
             inject:true,
             hash: true,
