@@ -1,28 +1,36 @@
 
-import { Link,useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import * as React from 'react'
 import { useState, useEffect } from 'react'
-import { Layout, Icon } from 'antd'
+import { Layout } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 import cookie from 'js-cookie';
+import { get } from '../net';
 
 const { Header } = Layout
 
+interface Flg {
+    flg: boolean
+}
 
 const Head: React.FC = () => {
     console.log(cookie.get('username'))
-    const [state,setState] = useState(false)
+    const [state, setState] = useState(false)
     const history = useHistory()
-    const loginOut = ():void => {
-        cookie.remove('username')
-        setState(!state)
-        history.push('/login')
-        console.log(111)
+    const logOut = async () => {
+        const { flg }: any = await get({ url: '/logout', toast: true })
+        if (flg) {
+            cookie.remove('username')
+            setState(!state)
+            history.push('/login')
+        }
+
     }
     // useEffect(() => {
-        
-        
+
+
     // })
-    
+
     return <Header>
         <header>
             <div className='header-left fl'>
@@ -51,13 +59,13 @@ const Head: React.FC = () => {
                 {
                     cookie.get('username') ?
                         <div className='header-user'>
-                            <a href=""><Icon type="user" className='user-touxing' />{cookie.get('username')}</a>
+                            <a href=""><UserOutlined className='user-touxing' />{cookie.get('username')}</a>
                             <ul className='header-user-hidden'>
                                 <li>
                                     <Link to="/user">个人中心</Link>
                                 </li>
                                 <li>
-                                    <a onClick={loginOut} href="javascript:void(0);">退出</a>
+                                    <a onClick={logOut} href="javascript:void(0);">退出</a>
                                 </li>
                             </ul>
                         </div>

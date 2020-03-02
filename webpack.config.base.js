@@ -24,6 +24,7 @@ module.exports = {
         extensions: [".ts", ".tsx", '.js', '.jsx', '.css', '.less', '.scss', '.json'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
+            '@net':path.resolve(__dirname,'src/net/index.ts')
         },
     }, 
     //loaders文件夹下是自己写的loader

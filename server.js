@@ -19,6 +19,15 @@ app.post('/login', (req, res) => {
     console.log(req.body)
     res.json(getData(req.body))
 })
+app.get('/logout',(req,res) => {
+    res.json({        
+            code: 0,
+            data: {
+                flg:true,
+            },
+            msg:'退出成功！'
+    })
+})
 
 function setData(key,value){
 
