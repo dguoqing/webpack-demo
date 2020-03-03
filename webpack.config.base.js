@@ -9,6 +9,12 @@ const Happypack = require('happypack')
 const os = require('os')
 const happyThreadPool = Happypack.ThreadPool({ size: os.cpus().length })
 
+
+//同步查找src目录下的任意文件夹下的任意文件
+const glob = require('glob');
+// 去除无用的样式
+const PurgecssWebpackPlugin = require('purgecss-webpack-plugin');
+
 const devMode = process.env.NODE_ENV !== 'production';
 
 
@@ -150,6 +156,11 @@ module.exports = {
             filename: devMode ? '[name].css' : '[name].[hash:5].css',
             chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
 
+        }),
+
+        // 去除无用的样式
+        new PurgecssWebpackPlugin({
+            paths: glob.sync('./src/**/*', {nodir: true})
         })
 
     ],

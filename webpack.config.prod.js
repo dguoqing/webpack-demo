@@ -12,6 +12,7 @@ const FileListPlugin = require('./plugins/FileListPlugin') // 手写插件，测
 
 module.exports = smart(webpackBase, {
     mode: 'production',
+    // entry:'./src/index.tsx',
     output: {
         // 输出目录
         path: path.resolve(__dirname, 'dist'),
@@ -24,9 +25,10 @@ module.exports = smart(webpackBase, {
         minimize: true,
         minimizer: [
             new TerserJSPlugin({
+                cache:true,
                 exclude: /node_modules/
             }),
-            new OptimizeCSSAssetsPlugin({})
+            // new OptimizeCSSAssetsPlugin({})
         ],
         splitChunks: {  //分割代码块多页面应用会用到
             chunks: "all",
@@ -54,19 +56,23 @@ module.exports = smart(webpackBase, {
             }
         }
     },
+    performance:{
+        hints: false,
+        // maxEntrypointSize: 400000
+    },
     plugins: [
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, './dist')]
         }),
-        new HtmlWebpackPlugin({
-            template: './src/404.html',
-            filename: '404.html',
-            hash: true,
-            minify: {
-                removeAttributeQuotes: true,
-                collapseWhitespace: true
-            }
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: './src/404.html',
+        //     filename: '404.html',
+        //     hash: true,
+        //     minify: {
+        //         removeAttributeQuotes: true,
+        //         collapseWhitespace: true
+        //     }
+        // }),
         new webpack.DllReferencePlugin({
             context: path.join(__dirname),
             manifest: require('./dll/vendor-manifest.json'),
@@ -79,6 +85,8 @@ module.exports = smart(webpackBase, {
                 NODE_ENV: '"production"'
             }
         }),
+        // 忽略moment目录下的locale文件夹
+        new webpack.IgnorePlugin(/\.\/locale/, /moment/),
         new FileListPlugin({
             filename:'list.md'
         })

@@ -14,6 +14,9 @@ import store from './redux'
 import App from './pages/App'
 import Router from './router'
 
+import moment from 'moment'
+import 'moment/locale/zh-cn';
+
 import './assets/style/base.css'
 import './assets/style/index.less'
 import 'antd/dist/antd.css'
