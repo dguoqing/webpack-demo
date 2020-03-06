@@ -158,10 +158,10 @@ module.exports = {
 
         }),
 
-        // 去除无用的样式
-        new PurgecssWebpackPlugin({
-            paths: glob.sync('./src/**/*', {nodir: true})
-        })
+        // // 去除无用的样式
+        // new PurgecssWebpackPlugin({
+        //     paths: glob.sync(`${path.join(__dirname, 'src')}/**/*.css`, {nodir: true})
+        // })
 
     ],
 }

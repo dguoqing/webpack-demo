@@ -32,7 +32,7 @@ const Head: React.FC = () => {
     // })
 
     return <Header>
-        <header>
+        <header className='clearfix'>
             <div className='header-left fl'>
                 <ul className='header-nav'>
                     <li>

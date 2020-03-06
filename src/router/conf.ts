@@ -8,8 +8,9 @@ import BaseConfig from '../conf'
 import Lazy from './lazy'
 const { ROOTPATH } = BaseConfig;
 console.log(BaseConfig)
+const lazy = (path:string) => Lazy(React.lazy(() => import(`../pages/${path}`)))
 
-const Test = Lazy(React.lazy(() => import('../pages/Test')))
+const Test = lazy("Test")
 
 const Home = Lazy(React.lazy(() => import('../pages/Home')));
 const App = Lazy(React.lazy(() => import('../pages/App')))

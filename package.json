@@ -11,9 +11,7 @@
     "server": "nodemon node server.js",
     "dev-server": "concurrently \"npm run dev\" \"npm run devServer\""
   },
-  "sideEffects": [
-    "./src/**/*.css"
-  ],
+  
   "homepage": "https://dguoqing.github.io/webpack-demo",
   "author": "",
   "license": "ISC",
