@@ -48,6 +48,10 @@ header .header-right .header-user {
   text-align: center;
   position: relative;
 }
+header .header-right .header-user .user-touxiang {
+  color: '#aeb9d8';
+  font-size: '24px';
+}
 header .header-right .header-user a {
   display: block;
   width: 100%;
@@ -58,6 +62,10 @@ header .header-right .header-user:hover {
 }
 header .header-right .header-user:hover .header-user-hidden {
   display: block;
+}
+header .header-right .header-user:hover .user-touxiang {
+  color: '#fff';
+  font-size: '24px';
 }
 header .header-right .header-user .header-user-hidden {
   position: absolute;
@@ -79,6 +87,10 @@ header .header-right .header-user .header-user-hidden li:hover {
 .main .app-content {
   background: '#ccc';
   min-height: 647px;
+}
+.logo {
+  width: 10px;
+  height: 20px;
 }
 
 .login {
@@ -104,15 +116,18 @@ header .header-right .header-user .header-user-hidden li:hover {
 
 @charset "UTF-8";
 /*css 初始化 */
-html, body, ul, li, p, h1, form,header { margin:0; padding:0; }
-input { border:none; padding:0;margin:0;outline-style:none; }
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img,header { margin:0; padding:0; }
+fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
 /*去掉input等聚焦时的蓝色边框*/
-ul { list-style:none; }
+ul, ol { list-style:none; }
 input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
- input { vertical-align:middle;}
- input { font-size:12px; margin:0; }
+select, input { vertical-align:middle;}
+select, input, textarea { font-size:12px; margin:0; }
+textarea { resize:none; }
 /*防止拖动*/
+img {border:0; vertical-align:middle; }
 /*  去掉图片低测默认的3像素空白缝隙，或者用display：block也可以*/
+table { border-collapse:collapse; }
 body {
     font:12px/150% Arial,Verdana,"\5b8b\4f53";
     color:#666;
@@ -128,9 +143,10 @@ body {
 }
 a {color:#666; text-decoration:none; }
 a:hover{color:#C81623;}
-h1 {text-decoration:none;font-weight:normal;font-size:100%;}
+h1,h2,h3,h4,h5,h6 {text-decoration:none;font-weight:normal;font-size:100%;}
 /*设置h标签的大小，设置跟父亲一样大的字体font-size:100%;*/
-s,i{font-style:normal;text-decoration:none;}
+s,i,em{font-style:normal;text-decoration:none;}
+.col-red{color: #C81623!important;}
 /*公共类*/
 .w {  /*版心 提取 */
     width: 1210px;margin:0 auto;
@@ -141,6 +157,21 @@ s,i{font-style:normal;text-decoration:none;}
 .fr {
     float:right
 }
+.al {
+    text-align:left
+}
+.ac {
+    text-align:center
+}
+.ar {
+    text-align:right
+}
+.hide {
+    display:none
+}
+.font12{ font-size: 12px;}
+.font14{ font-size: 14px;}
+.font16{ font-size: 16px;}
 /*公共部分*/
 /*头部导航开始*/
 /*尾部部导航开始*/
